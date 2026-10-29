@@ -29,6 +29,7 @@ int choose_gamemode(void) {
     }
 }
 
+
 int choose_player_hand(int player_num) {
     char user_input[8];
 
@@ -50,6 +51,51 @@ int choose_player_hand(int player_num) {
     }
 }
 
+
 int choose_cpu_hand(void) {
     return rand() % (3) + 1;
+}
+
+
+char* *convert_choices(int player_1, int player_2) {
+    char *hands[] = {"Rock", "Paper", "Scissors"};
+    char *player_1_choice;
+    char *player_2_choice;
+    for (int i = 0; i < 3; i++) {
+        if (player_1 - 1 == i) {
+            player_1_choice = hands[i];
+        }
+        if (player_2 - 1 == i) {
+            player_2_choice = hands[i];
+        }
+    }
+    char *player_choices[] = {player_1_choice, player_2_choice};
+    char* *choices = player_choices;
+    return (choices);
+}
+
+
+int* handle_gamemode(int gamemode) {
+    int player_1_hand, player_2_hand;
+    switch (gamemode) {
+        case 1:
+            printf("\n");
+            printf("Gamemode chosen: single-player\n");
+            printf("\n");
+            player_1_hand = choose_player_hand(1);
+            player_2_hand = choose_cpu_hand();
+            break;
+        case 2:
+            printf("\n");
+            printf("Gamemode chosen: multi-player\n");
+            printf("\n");
+            player_1_hand = choose_player_hand(1);
+            player_2_hand = choose_player_hand(2);
+            break;
+        default:
+            exit(1);
+    }
+    int player_hands[] = {player_1_hand, player_2_hand};
+    int* hands_pointer = player_hands;
+    return (hands_pointer);
 }

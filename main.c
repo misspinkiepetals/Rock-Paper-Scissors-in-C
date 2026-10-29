@@ -6,26 +6,7 @@
 
 int main(void) {
     srand(time(NULL));
-    int gamemode = choose_gamemode();
-
-    int player_1_hand, player_2_hand;
-    switch (gamemode) {
-        case 1:
-            printf("\n");
-            printf("Gamemode chosen: single-player\n");
-            printf("\n");
-            player_1_hand = choose_player_hand(1);
-            player_2_hand = choose_cpu_hand();
-            break;
-        case 2:
-            printf("\n");
-            printf("Gamemode chosen: multi-player\n");
-            printf("\n");
-            player_1_hand = choose_player_hand(1);
-            player_2_hand = choose_player_hand(2);
-            break;
-        default:
-            exit(1);
-    }
-    printf("%d, %d", player_1_hand, player_2_hand);
+    int* player_hands = handle_gamemode(choose_gamemode());
+    char* *player_choices = convert_choices(player_hands[0], player_hands[1]);
+    printf("%s, %s", player_choices[0], player_choices[1]);
 }
