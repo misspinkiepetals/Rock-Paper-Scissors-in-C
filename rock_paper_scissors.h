@@ -2,7 +2,8 @@
 #define __ROCK_PAPER_SCISSORS_H__
 
 
-int select_gamemode(void);
-
+int choose_gamemode(void);
+int choose_player_hand(int player_num);
+int choose_cpu_hand(void);
 
 #endif
