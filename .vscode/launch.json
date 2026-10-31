@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/violetta/storage/scripts/Rock-Paper-Scissors-in-C",
-      "program": "/home/violetta/storage/scripts/Rock-Paper-Scissors-in-C/build/Debug/outDebug",
+      "cwd": "/home/violetta/storage/scripts/Rock-Paper-Scissors-in-C/include",
+      "program": "/home/violetta/storage/scripts/Rock-Paper-Scissors-in-C/include/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
