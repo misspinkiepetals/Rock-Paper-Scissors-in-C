@@ -1,2 +1,6 @@
 # .clang-format
 IndentWidth: 4
+SeparateDefinitionBlocks: Always
+AllowShortFunctionsOnASingleLine: None
+PackParameters:
+    BinPack: OnePerLine

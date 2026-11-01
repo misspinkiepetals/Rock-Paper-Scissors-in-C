@@ -1,12 +1,18 @@
-#include "rock_paper_scissors.h"
-#include <stdio.h>
+#include "../include/rock_paper_scissors.h"
 #include <stdlib.h>
 #include <time.h>
-
+#include <stdio.h>
 
 int main(void) {
     srand(time(NULL));
-    int* player_hands = handle_gamemode(choose_gamemode());
-    char* *player_choices = convert_choices(player_hands[0], player_hands[1]);
-    printf("%s, %s", player_choices[0], player_choices[1]);
+    int *player_hands = handle_gamemode(choose_gamemode());
+    int player_1_hand = player_hands[0];
+    int player_2_hand = player_hands[1];
+    char *player_choices[] = {convert_choice(player_1_hand),
+                              convert_choice(player_2_hand)};
+    determine_winner(player_1_hand, player_2_hand);
+    if(game_restart()) {
+        printf("\n\n");
+        main();
+    }
 }

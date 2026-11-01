@@ -1,7 +1,7 @@
 VPATH = src:include
 
 CC = gcc
-CCFLAGS = -Iinclude
+CCFLAGS = -I include
 objects = rock_paper_scissors.o main.o
 
 main: $(objects)
