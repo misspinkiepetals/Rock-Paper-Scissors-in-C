@@ -1,0 +1,30 @@
+[
+  {
+    "file": "include/rock_paper_scissors.c",
+    "arguments": [
+      "gcc",
+      "-I",
+      "include",
+      "-o",
+      "rock_paper_scissors.o",
+      "-c",
+      "include/rock_paper_scissors.c"
+    ],
+    "directory": "/home/violetta/storage/scripts/Rock-Paper-Scissors-in-C",
+    "output": "rock_paper_scissors.o"
+  },
+  {
+    "file": "src/main.c",
+    "arguments": [
+      "gcc",
+      "-I",
+      "include",
+      "-o",
+      "main.o",
+      "-c",
+      "src/main.c"
+    ],
+    "directory": "/home/violetta/storage/scripts/Rock-Paper-Scissors-in-C",
+    "output": "main.o"
+  }
+]

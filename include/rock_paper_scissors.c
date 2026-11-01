@@ -6,8 +6,45 @@
 int gamemodes[] = {1, 2};
 // Hand 1 is rock, hand 2 is paper, and hand 3 is scissors.
 int hands[] = {1, 2, 3};
+int centering_whitespace = 5;
+int title_separation = 2;
+
+void display_centering_whitespace(void) {
+    /* Displays whitespace to center titles.
+    Might be abstracted into an UI library.
+    */
+
+    for (int i = 0; i <= centering_whitespace; i++) {
+        printf(" ");
+    }
+}
+
+void display_title_separation(void) {
+    /* Displays newline characters to separate titles.
+    Might be abstracted into an UI library.
+    */
+
+    for (int i = 0; i < title_separation; i++) {
+        printf("\n");
+    }
+}
+
+void display_introduction(void) {
+    /* Displays a text-based user interface to introduce the player to the game.
+    Might be abstracted into an UI library.
+    */
+
+    display_title_separation();
+    display_centering_whitespace();
+    printf("- Welcome to Rock-Paper-Scissors... But in C! -\n");
+    display_title_separation();
+}
 
 void display_gamemode_selection(void) {
+    /* Displays a text-based user interface for gamemode selection.
+    Might be abstracted into an UI library.
+    */
+
     printf("Gamemodes:\n");
     printf("1. Single-player (Vs CPU)\n");
     printf("2. Multi-player (Local)\n");
