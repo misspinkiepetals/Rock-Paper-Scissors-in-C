@@ -1,18 +1,22 @@
-VPATH = src:include
-
+VPATH = build include src
 CC = gcc
-CCFLAGS = -I include
-objects = rock_paper_scissors.o main.o
+CFLAGS = -I include
+DIRECTORY = cd build/;
 
-main: $(objects)
-	$(CC) $(CCFLAGS) -o $@ $^
+objects = main.o rps_display_ui.o rps_game_logic.o
 
-main.o: main.c rock_paper_scissors.h
-	$(CC) $(CCFLAGS) -o $@ -c $<
+build/main: $(objects)
+	$(CC) $(CFLAGS) -o $@ $^
 
-rock_paper_scissors.o: rock_paper_scissors.c rock_paper_scissors.h
-	$(CC) $(CCFLAGS) -o $@ -c $<
+main.o: main.c rps_display_ui.h rps_game_logic.h
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+rps_display_ui.o: rps_display_ui.c rps_display_ui.h
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+rps_game_logic.o: rps_game_logic.c rps_game_logic.h
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 .PHONY: clean
 clean: 
-	rm main $(objects)
+	rm $(objects)

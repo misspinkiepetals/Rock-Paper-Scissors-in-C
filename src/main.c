@@ -1,20 +1,15 @@
-#include "rock_paper_scissors.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "rps_game_logic.h"
+#include "rps_display_ui.h"
 
 int main(void) {
-    // Random seed for CPU hand choices
-    srand(time(NULL));
+    set_random_seed();
     display_introduction();
-    int *player_hands = handle_gamemode(choose_gamemode());
-    int player_1_hand = player_hands[0];
-    int player_2_hand = player_hands[1];
-    char *player_choices[] = {convert_choice(player_1_hand),
-                              convert_choice(player_2_hand)};
-    determine_winner(player_1_hand, player_2_hand);
+    int gamemode = select_gamemode();
+    display_selected_gamemode(gamemode);
+    char *hand_1, *hand_2;
+    select_hands(gamemode, &hand_1, &hand_2);
+    determine_winner(hand_1, hand_2);
     if (game_restart()) {
-        printf("\n\n");
         main();
     }
 }
