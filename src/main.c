@@ -8,9 +8,9 @@ int main(void) {
     display_introduction();
     int gamemode = select_gamemode();
     display_selected_gamemode(gamemode);
-    char *hand_1 = malloc(16);
-    char *hand_2 = malloc(16);
-    select_hands(gamemode, hand_1, hand_2);
+    char *hand_1 = malloc(8);
+    char *hand_2 = malloc(8);
+    select_hands(gamemode, &hand_1, &hand_2);
     display_winner(determine_winner(gamemode, hand_1, hand_2));
     if (game_restart()) {
         main();

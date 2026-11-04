@@ -69,21 +69,21 @@ char *select_player_hand(int player) {
     return NULL;
 }
 
-void select_hands(int gamemode, char *hand_1, char *hand_2) {
+void select_hands(int gamemode, char **hand_1, char **hand_2) {
     switch (gamemode) {
     case 1:
-        hand_1 = select_player_hand(1);
-        hand_2 = select_player_hand(0);
+        *hand_1 = select_player_hand(1);
+        *hand_2 = select_player_hand(0);
         display_title_separation();
-        display_selected_hand(1, hand_1);
-        display_selected_hand(0, hand_2);
+        display_selected_hand(1, *hand_1);
+        display_selected_hand(0, *hand_2);
         break;
     case 2:
-        hand_1 = select_player_hand(1);
-        hand_2 = select_player_hand(2);
+        *hand_1 = select_player_hand(1);
+        *hand_2 = select_player_hand(2);
         display_title_separation();
-        display_selected_hand(1, hand_1);
-        display_selected_hand(2, hand_2);
+        display_selected_hand(1, *hand_1);
+        display_selected_hand(2, *hand_2);
         break;
     default:
         exit(1);
@@ -92,14 +92,13 @@ void select_hands(int gamemode, char *hand_1, char *hand_2) {
 }
 
 void get_winning_hands(const char *hand, char **winning_hands) {
-
-    char *rock_winning_hands[] = {"Scissors", "Bird"};
+    char *rock_winning_hands[] = {"Scissors"};
     char *paper_winning_hands[] = {"Rock"};
     char *scissors_winning_hands[] = {"Paper"};
     int array_length;
-
     if (strcmp(hand, "Rock") == 0) {
         array_length = sizeof(rock_winning_hands) / strlen(*rock_winning_hands);
+
         copy_array_of_strings(winning_hands, rock_winning_hands, array_length);
     } else if (strcmp(hand, "Paper") == 0) {
         array_length =
@@ -121,15 +120,11 @@ PISS STUPID FUNCTION
 */
 
 int determine_winner(int gamemode, char *hand_1, char *hand_2) {
-    char **hand_1_winning_hands;
+    char **hand_1_winning_hands = malloc(16);
     get_winning_hands(hand_1, hand_1_winning_hands);
-    printf("%zd, %zd\n", sizeof(hand_1_winning_hands),
-           strlen(*hand_1_winning_hands));
     for (int i = 0;
-         i < sizeof(*hand_1_winning_hands) / strlen(*hand_1_winning_hands);
+         i < sizeof(hand_1_winning_hands) / strlen(*hand_1_winning_hands);
          i++) {
-        printf("aaaaaa %zd\n",
-               sizeof(hand_1_winning_hands) / strlen(*hand_1_winning_hands));
         if (strcmp(hand_1_winning_hands[i], hand_2) == 0) {
             switch (gamemode) {
             case 1:
@@ -139,13 +134,11 @@ int determine_winner(int gamemode, char *hand_1, char *hand_2) {
             }
         }
     }
-    printf("DOES IT REACH HERE OMG\n");
-    char **hand_2_winning_hands = malloc(16);
+    char **hand_2_winning_hands;
     get_winning_hands(hand_2, hand_2_winning_hands);
     for (int i = 0;
-         i < sizeof(hand_2_winning_hands) / strlen(*hand_2_winning_hands);
+         i < sizeof(*hand_2_winning_hands) / strlen(*hand_2_winning_hands);
          i++) {
-        printf("Ts bud uwu: %s\n", hand_2_winning_hands[i]);
         if (strcmp(hand_2_winning_hands[i], hand_1) == 0) {
             switch (gamemode) {
             case 1:
