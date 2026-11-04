@@ -30,7 +30,7 @@ void display_introduction(void) {
     printf("- Welcome to Rock-Paper-Scissors... But in C! -\n");
 }
 
-void display_gamemode_selection(void) {
+void display_gamemode_select(void) {
     /* Displays gamemode selection.
      */
 
@@ -39,7 +39,7 @@ void display_gamemode_selection(void) {
     printf("1. Single-player (Vs CPU)\n");
     printf("2. Multi-player (Local)\n");
     display_title_separation();
-    printf("Choose: ");
+    printf("Select: ");
 }
 
 void display_selected_gamemode(int gamemode) {
@@ -57,7 +57,7 @@ void display_selected_gamemode(int gamemode) {
     display_title_separation();
 }
 
-void display_hand_selection(int player) {
+void display_hand_select(int player) {
     /* Displays hand selection.
      */
 
@@ -69,30 +69,32 @@ void display_hand_selection(int player) {
     printf("Player %d choose: ", player);
 }
 
-void display_player_choice(int player, char *hand) {
+void display_selected_hand(int player, const char *hand) {
     /* Displays a player's choice.
      */
 
-    printf("Player %d chose: %s\n", player, hand);
-}
-
-void display_cpu_choice(char *hand) {
-    /* Displays a CPU's choice.
-     */
-
-    printf("CPU chose: %s\n", hand);
+    switch (player) {
+    case 0:
+        printf("CPU chose: %s\n", hand);
+        break;
+    default:
+        printf("Player %d chose: %s\n", player, hand);
+        break;
+    }
 }
 
 void display_winner(int player) {
-    display_title_separation();
-    if (player) {
-        printf("Player %d wins!\n", player);
-    }
-    else {
+    switch (player) {
+    case -1:
+        printf("It's a draw!\n");
+        break;
+    case 0:
         printf("CPU wins!\n");
+        break;
+    default:
+        printf("Player %d wins!\n", player);
+        break;
     }
-    
-    display_title_separation();
 }
 
 void display_restart_prompt(void) {
